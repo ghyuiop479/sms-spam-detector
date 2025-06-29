@@ -1,0 +1,13 @@
+body {
+  background: linear-gradient(120deg, #74ebd5, #acb6e5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  background-color: #ffffffcc;
+}
+
+textarea::placeholder {
+  font-style: italic;
+  color: #888;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SMS Spam Detector</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg border-0 rounded-4">
+          <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">📱 SMS Spam Detector</h2>
+            <form method="POST">
+              <div class="form-group mb-4">
+                <textarea name="message" class="form-control form-control-lg" placeholder="Enter your SMS message here..." rows="5" required>{{ request.form.get('message', '') }}</textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Detect</button>
+              </div>
+            </form>
+
+            {% if prediction %}
+              <div class="alert mt-4 {{ 'alert-danger' if prediction == 'Spam' else 'alert-success' }}">
+                <strong>Prediction:</strong> {{ prediction }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
